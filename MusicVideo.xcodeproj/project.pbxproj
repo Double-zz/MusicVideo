@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E98AE6D21D0C07080008BC13 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98AE6D11D0C07080008BC13 /* Constants.swift */; };
+		E98AE6D41D0C08230008BC13 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98AE6D31D0C08230008BC13 /* MusicVideo.swift */; };
 		E9D5AD9B1D017D1800E81B43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D5AD9A1D017D1800E81B43 /* AppDelegate.swift */; };
 		E9D5AD9D1D017D1800E81B43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D5AD9C1D017D1800E81B43 /* ViewController.swift */; };
 		E9D5ADA01D017D1900E81B43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9D5AD9E1D017D1900E81B43 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E98AE6D11D0C07080008BC13 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E98AE6D31D0C08230008BC13 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		E9D5AD971D017D1800E81B43 /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9D5AD9A1D017D1800E81B43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9D5AD9C1D017D1800E81B43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E98AE6D01D0C06E50008BC13 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E98AE6D11D0C07080008BC13 /* Constants.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		E9D5AD8E1D017D1800E81B43 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +68,7 @@
 		E9D5AD991D017D1800E81B43 /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
+				E98AE6D01D0C06E50008BC13 /* Utils */,
 				E9D5ADAF1D01837B00E81B43 /* Supporting Files */,
 				E9D5ADAC1D01833800E81B43 /* Model */,
 				E9D5ADAD1D01834900E81B43 /* Controller */,
@@ -68,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				E9D5ADB01D01D93700E81B43 /* APIManager.swift */,
+				E98AE6D31D0C08230008BC13 /* MusicVideo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -173,7 +187,9 @@
 			files = (
 				E9D5ADB11D01D93700E81B43 /* APIManager.swift in Sources */,
 				E9D5AD9D1D017D1800E81B43 /* ViewController.swift in Sources */,
+				E98AE6D41D0C08230008BC13 /* MusicVideo.swift in Sources */,
 				E9D5AD9B1D017D1800E81B43 /* AppDelegate.swift in Sources */,
+				E98AE6D21D0C07080008BC13 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
