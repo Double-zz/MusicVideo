@@ -42,7 +42,7 @@ class Videos {
     var vPrice: String {
         return _vPrice
     }
-    
+     
     var vArtist: String {
         return _vArtist
     }
@@ -77,14 +77,14 @@ class Videos {
         
         
         if let image = data["im:image"] as? JSONArray,
-            let videoImage = image[3] as? String {
+            let videoImage = image[2] as? String {
             self._vImageUrl = videoImage.stringByReplacingOccurrencesOfString("100x100", withString: "600x600")
         }else {
             _vImageUrl = ""
         }
         
         if let videoLink = data["link"] as? JSONArray,
-        let attributes = videoLink[2] as? JSONDictionary,
+        let attributes = videoLink[1] as? JSONDictionary,
             let herf = attributes["href"] as? String {
             self._vVideoUrl = herf
         } else {
