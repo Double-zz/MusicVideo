@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E910C1861D0E997300B2B810 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E910C1851D0E997300B2B810 /* Reachability.m */; };
 		E98AE6D21D0C07080008BC13 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98AE6D11D0C07080008BC13 /* Constants.swift */; };
 		E98AE6D41D0C08230008BC13 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98AE6D31D0C08230008BC13 /* MusicVideo.swift */; };
 		E9D5AD9B1D017D1800E81B43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D5AD9A1D017D1800E81B43 /* AppDelegate.swift */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E910C1831D0E997300B2B810 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
+		E910C1841D0E997300B2B810 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		E910C1851D0E997300B2B810 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E98AE6D11D0C07080008BC13 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E98AE6D31D0C08230008BC13 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		E9D5AD971D017D1800E81B43 /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +45,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E910C1821D0E993500B2B810 /* Obj-c */ = {
+			isa = PBXGroup;
+			children = (
+				E910C1841D0E997300B2B810 /* Reachability.h */,
+				E910C1851D0E997300B2B810 /* Reachability.m */,
+				E910C1831D0E997300B2B810 /* MusicVideo-Bridging-Header.h */,
+			);
+			name = "Obj-c";
+			sourceTree = "<group>";
+		};
 		E98AE6D01D0C06E50008BC13 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +82,7 @@
 		E9D5AD991D017D1800E81B43 /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
+				E910C1821D0E993500B2B810 /* Obj-c */,
 				E98AE6D01D0C06E50008BC13 /* Utils */,
 				E9D5ADAF1D01837B00E81B43 /* Supporting Files */,
 				E9D5ADAC1D01833800E81B43 /* Model */,
@@ -189,6 +204,7 @@
 				E9D5AD9D1D017D1800E81B43 /* ViewController.swift in Sources */,
 				E98AE6D41D0C08230008BC13 /* MusicVideo.swift in Sources */,
 				E9D5AD9B1D017D1800E81B43 /* AppDelegate.swift in Sources */,
+				E910C1861D0E997300B2B810 /* Reachability.m in Sources */,
 				E98AE6D21D0C07080008BC13 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,11 +320,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MusicVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ffxdz123-gmail.MusicVideo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicVideo/MusicVideo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -317,11 +336,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MusicVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ffxdz123-gmail.MusicVideo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicVideo/MusicVideo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
