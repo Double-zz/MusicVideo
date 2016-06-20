@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E910C1861D0E997300B2B810 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E910C1851D0E997300B2B810 /* Reachability.m */; };
+		E91360331D17F385004D736E /* MusicVideoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91360321D17F385004D736E /* MusicVideoTVC.swift */; };
 		E98AE6D21D0C07080008BC13 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98AE6D11D0C07080008BC13 /* Constants.swift */; };
 		E98AE6D41D0C08230008BC13 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98AE6D31D0C08230008BC13 /* MusicVideo.swift */; };
 		E9D5AD9B1D017D1800E81B43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D5AD9A1D017D1800E81B43 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 		E910C1831D0E997300B2B810 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E910C1841D0E997300B2B810 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		E910C1851D0E997300B2B810 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		E91360321D17F385004D736E /* MusicVideoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVC.swift; sourceTree = "<group>"; };
 		E98AE6D11D0C07080008BC13 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E98AE6D31D0C08230008BC13 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		E9D5AD971D017D1800E81B43 /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				E9D5AD9C1D017D1800E81B43 /* ViewController.swift */,
+				E91360321D17F385004D736E /* MusicVideoTVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				E9D5AD9B1D017D1800E81B43 /* AppDelegate.swift in Sources */,
 				E910C1861D0E997300B2B810 /* Reachability.m in Sources */,
 				E98AE6D21D0C07080008BC13 /* Constants.swift in Sources */,
+				E91360331D17F385004D736E /* MusicVideoTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
