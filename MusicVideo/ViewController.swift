@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         }
     }
     
-    deinit{
+    deinit{ 
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
 
