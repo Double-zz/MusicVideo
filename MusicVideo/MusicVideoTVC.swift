@@ -22,37 +22,60 @@ class MusicVideoTVC: UITableViewController {
         //#endif
         reachabilityStatusChanged()
         
-        print(reachabilityStatus)
         
-        let api = APIManager()
-        
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
-    }
+           }
     
     func didLoadData(videos: [Videos]) {
         
         self.videos = videos
         
-        for (index, item) in videos.enumerate() {
-            
-            print("\(index), the name is \(item.vName)")
-            
-        }
-        
+//        for (index, item) in videos.enumerate() {
+//            
+//            print("\(index), the name is \(item.vName)")
+//            
+//        }
+//        
         tableView.reloadData()
         
+    }
+    
+    func runApi() {
+        let api = APIManager()
+        
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
     }
     
     func reachabilityStatusChanged() {
         
         switch reachabilityStatus {
-        case NOACCESS: view.backgroundColor = UIColor.redColor()
-        //displayLabel.text = "No Internet"
-        case WIFI: view.backgroundColor = UIColor.greenColor()
-        //displayLabel.text = "Reachable with WIFI"
-        case WWAN: view.backgroundColor = UIColor.blueColor()
-        //displayLabel.text = "Reachable with Cellular"
-        default:return
+        case NOACCESS:
+            view.backgroundColor = UIColor.redColor()
+            
+            let alert = UIAlertController(title: "No Internet Access", message: "Please checking your internet connect", preferredStyle: .Alert )
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
+                action -> () in
+                print("cancel")
+            }
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive ,
+                                             handler: { test ->() in print("") } )
+            
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: {test -> () in print("ok")})
+            
+            alert.addAction(cancelAction)
+            alert.addAction(deleteAction)
+            alert.addAction(okAction)
+            
+            self.presentViewController(alert, animated: true , completion: nil)
+            
+        default:
+            view.backgroundColor = UIColor.greenColor()
+            if videos.count > 0 {
+                print("Do not refresh again")
+            } else {
+                runApi()
+            }
         }
     }
     
