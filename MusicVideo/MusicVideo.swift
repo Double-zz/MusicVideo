@@ -21,6 +21,8 @@ class Videos {
     private var _vLinkToiTunes: String
     private var _vReleaseDate: String
     
+    var vrank = 0
+    
     var vImageData: NSData?
     
     var vName: String{

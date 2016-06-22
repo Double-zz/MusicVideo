@@ -74,15 +74,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return videos.count
     }
     
+    private struct ResuseCellID {
+        static let cell = "cell"
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(ResuseCellID.cell, forIndexPath: indexPath)
         
         let video = videos[indexPath.row]
-        
-        cell.textLabel?.text = "\(indexPath.row + 1)"
-        cell.detailTextLabel?.text = video.vName
-        
         return cell
     }
     
