@@ -102,7 +102,7 @@ class MusicVideoTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(ResuseCellID.cell, forIndexPath: indexPath) as! MusicVideoTableViewCell
 
-        cell.videos = videos[indexPath.row]
+        cell.video = videos[indexPath.row]
         
         return cell
     }
