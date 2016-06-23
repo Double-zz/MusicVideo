@@ -30,6 +30,7 @@ class MusicVideoTableViewCell: UITableViewCell {
             musicImage.image = UIImage(data: video!.vImageData!)
         } else {
             getImageData(video!, imageView: musicImage)
+            print("get image from back ground")
         }
     }
     
