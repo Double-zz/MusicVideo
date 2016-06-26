@@ -16,12 +16,20 @@ class MusicVideoTableViewCell: UITableViewCell {
         }
     }
     
+    // add cell font style
+    var fontStyle: UIFont {
+        return UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+    }
+    
     
     @IBOutlet weak var musicImage: UIImageView!
     @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var musicTitle: UILabel!
     
     func updateCell() {
+        musicTitle.font = fontStyle
+        rank.font = fontStyle
+        
         rank.text = ("\(video!.vrank)")
         musicTitle.text = video?.vName
         
@@ -33,9 +41,6 @@ class MusicVideoTableViewCell: UITableViewCell {
             print("get image from back ground")
         }
     }
-    
-    
-    
     
     
     func getImageData(video: Videos, imageView: UIImageView) {
