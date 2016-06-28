@@ -62,7 +62,7 @@
                                     <outlet property="musicImage" destination="Vzw-yG-WVG" id="4cG-b2-V9Q"/>
                                     <outlet property="musicTitle" destination="RCI-UF-jUJ" id="p1D-g2-soU"/>
                                     <outlet property="rank" destination="SJN-GN-Wh2" id="BBA-t9-9cD"/>
-                                    <segue destination="RpA-iu-qKw" kind="show" id="vdS-ij-Ppf"/>
+                                    <segue destination="RpA-iu-qKw" kind="show" identifier="detailView" id="vdS-ij-Ppf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -160,10 +160,17 @@
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </toolbarItems>
+                    <connections>
+                        <outlet property="vGenre" destination="pmb-mI-eVu" id="HcX-Cu-SMF"/>
+                        <outlet property="vImage" destination="OKX-ST-ahf" id="jhA-ih-Jni"/>
+                        <outlet property="vName" destination="kMk-U7-irO" id="79I-kI-FUC"/>
+                        <outlet property="vPrice" destination="IBY-Rn-CEp" id="5ew-HY-sT6"/>
+                        <outlet property="vRights" destination="RPF-Hj-p5z" id="L5Q-1v-hmB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qT-Zz-8xw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2551" y="505"/>
+            <point key="canvasLocation" x="2584" y="505"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qQa-kJ-Rs1">

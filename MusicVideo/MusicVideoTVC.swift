@@ -102,19 +102,31 @@ class MusicVideoTVC: UITableViewController {
         return videos.count
     }
     
-    private struct ResuseCellID {
+    private struct StoryboardID {
         static let cell = "cell"
+        static let detailSegue = "detailView"
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(ResuseCellID.cell, forIndexPath: indexPath) as! MusicVideoTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(StoryboardID.cell, forIndexPath: indexPath) as! MusicVideoTableViewCell
 
         cell.video = videos[indexPath.row]
         
         return cell
     }
     
-
+    //MARK: - Navigation
+    //         Get the new view controller using segue.destinationViewController.
+    //         Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == StoryboardID.detailSegue {
+            let index = tableView.indexPathForSelectedRow
+            let video = videos[(index?.row)!]
+            let detailView = segue.destinationViewController as! MusicVideoDetailVC
+            detailView.videos = video
+        }
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -150,14 +162,8 @@ class MusicVideoTVC: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
+    
+   
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
