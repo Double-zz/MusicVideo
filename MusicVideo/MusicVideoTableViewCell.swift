@@ -32,6 +32,7 @@ class MusicVideoTableViewCell: UITableViewCell {
         
         rank.text = ("\(video!.vrank)")
         musicTitle.text = video?.vName
+        musicImage.image = UIImage(named: "cellPlaceHolder")
         
         if video!.vImageData != nil {
             print("get image from local data")
