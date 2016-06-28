@@ -82,7 +82,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.dequeueReusableCellWithIdentifier(ResuseCellID.cell, forIndexPath: indexPath)
         
-        let video = videos[indexPath.row]
+        _ = videos[indexPath.row]
         return cell
     }
     
