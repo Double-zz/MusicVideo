@@ -11,6 +11,9 @@ import UIKit
 class MusicVideoDetailVC: UIViewController {
 
     var videos:Videos?
+    var preferredFontStyle: UIFont {
+        return UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    }
     
     @IBOutlet weak var vImage: UIImageView!
     @IBOutlet weak var vName: UILabel!
@@ -21,9 +24,17 @@ class MusicVideoDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(self.changedFontStyle),
+                                                         name: UIContentSizeCategoryDidChangeNotification, object: nil)
         updateView()
     }
     
+    func changedFontStyle() {
+        vName.font = preferredFontStyle
+        vGenre.font = preferredFontStyle
+        vRights.font = preferredFontStyle
+        vPrice.font = preferredFontStyle
+    }
     func updateView() {
         self.title = videos?.vArtist
         vName.text = videos?.vName
@@ -37,5 +48,8 @@ class MusicVideoDetailVC: UIViewController {
             vImage.image = UIImage(named: "imageNotAvailable")
             
         }
+    }
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
 }
