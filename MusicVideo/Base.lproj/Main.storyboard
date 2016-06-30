@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1910" y="505"/>
         </scene>
-        <!--Table View Controller-->
+        <!--SettingTVC-->
         <scene sceneID="bfy-mV-cZX">
             <objects>
-                <tableViewController id="tbi-1H-GWD" sceneMemberID="viewController">
+                <tableViewController id="tbi-1H-GWD" customClass="SettingTVC" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jul-S1-vmR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -248,6 +248,13 @@
                             <outlet property="delegate" destination="tbi-1H-GWD" id="WA6-6x-njz"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="APICountDisplay" destination="g56-mx-u62" id="cmc-47-HLf"/>
+                        <outlet property="aboutDisplay" destination="ibX-rf-Thk" id="iOl-iu-C3C"/>
+                        <outlet property="bestImageDisplay" destination="37G-F9-iRy" id="kuR-8K-2Ud"/>
+                        <outlet property="feedbackDisplay" destination="eqX-63-zh0" id="TIS-bO-O8a"/>
+                        <outlet property="securityDisplay" destination="qGY-fk-2fR" id="QVg-91-Sh4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rwo-cg-D25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
