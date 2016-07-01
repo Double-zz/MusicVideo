@@ -119,6 +119,9 @@
                                                 <constraint firstItem="ibX-rf-Thk" firstAttribute="centerY" secondItem="Vcj-Au-ebL" secondAttribute="centerY" id="oHY-OG-A9l"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="P2u-3i-XSa" kind="show" identifier="showAbout" id="tC3-5s-4mm"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="84" id="dIK-mj-kSe">
                                         <rect key="frame" x="0.0" y="148" width="600" height="84"/>
@@ -268,6 +271,59 @@
             </objects>
             <point key="canvasLocation" x="1910" y="1224"/>
         </scene>
+        <!--AboutVC-->
+        <scene sceneID="a0q-OA-5m8">
+            <objects>
+                <viewController id="P2u-3i-XSa" customClass="AboutVC" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DQa-sj-d0v"/>
+                        <viewControllerLayoutGuide type="bottom" id="WBO-YD-635"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tCH-5i-0qC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTt-Fs-Ndx">
+                                <rect key="frame" x="0.0" y="64" width="600" height="257"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vma-Kf-jKy">
+                                <rect key="frame" x="0.0" y="329" width="600" height="227"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="227" id="XuF-3Y-Gk3"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PV1-aZ-wDk">
+                                <rect key="frame" x="304" y="428" width="296" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XTt-Fs-Ndx" secondAttribute="trailing" id="4vh-Jv-310"/>
+                            <constraint firstItem="vma-Kf-jKy" firstAttribute="bottom" secondItem="WBO-YD-635" secondAttribute="top" id="6pe-gV-7d9"/>
+                            <constraint firstItem="XTt-Fs-Ndx" firstAttribute="leading" secondItem="vma-Kf-jKy" secondAttribute="leading" id="CZQ-np-sGS"/>
+                            <constraint firstItem="XTt-Fs-Ndx" firstAttribute="trailing" secondItem="vma-Kf-jKy" secondAttribute="trailing" id="FWc-G0-0BA"/>
+                            <constraint firstItem="vma-Kf-jKy" firstAttribute="top" secondItem="XTt-Fs-Ndx" secondAttribute="bottom" constant="8" symbolic="YES" id="KF6-qu-nvq"/>
+                            <constraint firstItem="XTt-Fs-Ndx" firstAttribute="leading" secondItem="tCH-5i-0qC" secondAttribute="leading" id="Wkb-db-ggY"/>
+                            <constraint firstItem="XTt-Fs-Ndx" firstAttribute="top" secondItem="DQa-sj-d0v" secondAttribute="bottom" id="eqH-E3-q6J"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="PV1-aZ-wDk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="aboutTextView" destination="XTt-Fs-Ndx" id="ogX-8H-fTG"/>
+                        <outlet property="imageLeft" destination="vma-Kf-jKy" id="sFh-4h-faO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWQ-oj-0Gq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2592" y="1224"/>
+        </scene>
         <!--Music Video DetailVC-->
         <scene sceneID="oey-Pn-K6w">
             <objects>
@@ -358,6 +414,12 @@
                                 <exclude reference="QJF-Lg-bTs"/>
                                 <exclude reference="gUw-bz-EkK"/>
                                 <exclude reference="lZx-sX-YUT"/>
+                                <exclude reference="2bU-lc-Qp4"/>
+                                <include reference="D1l-hf-qZO"/>
+                                <exclude reference="RRE-T4-01A"/>
+                                <include reference="YTe-yP-3cz"/>
+                                <include reference="cPO-ob-sDV"/>
+                                <include reference="tZa-6z-V7H"/>
                                 <exclude reference="iky-uV-pjL"/>
                                 <exclude reference="jyU-HD-fsg"/>
                                 <exclude reference="uqk-79-kf6"/>
@@ -365,12 +427,6 @@
                                 <exclude reference="2cZ-3X-m0Y"/>
                                 <exclude reference="XOT-li-xjj"/>
                                 <exclude reference="jOl-fW-tWP"/>
-                                <exclude reference="2bU-lc-Qp4"/>
-                                <include reference="D1l-hf-qZO"/>
-                                <exclude reference="RRE-T4-01A"/>
-                                <include reference="YTe-yP-3cz"/>
-                                <include reference="cPO-ob-sDV"/>
-                                <include reference="tZa-6z-V7H"/>
                             </mask>
                         </variation>
                     </view>

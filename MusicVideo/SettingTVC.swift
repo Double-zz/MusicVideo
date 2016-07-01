@@ -84,4 +84,12 @@ class SettingTVC: UITableViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil )
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showAbout" {
+            print("Just push about view to main window")
+            
+        }
+    }
+    
 }
