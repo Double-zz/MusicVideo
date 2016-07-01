@@ -159,7 +159,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mm8-KY-Wpy">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mm8-KY-Wpy">
                                                     <rect key="frame" x="535" y="26" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="touchIDSecurity:" destination="tbi-1H-GWD" eventType="valueChanged" id="Fxb-1g-pM1"/>
@@ -190,7 +190,7 @@
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="taN-1D-UkB">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="taN-1D-UkB">
                                                     <rect key="frame" x="535" y="31" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
@@ -210,7 +210,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="75" verticalHuggingPriority="251" text="200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g56-mx-u62">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="75" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g56-mx-u62">
                                                     <rect key="frame" x="8" y="8" width="584" height="75"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -232,8 +232,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ykq-7y-d60">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="ykq-7y-d60">
                                                     <rect key="frame" x="46" y="27" width="509" height="31"/>
+                                                    <connections>
+                                                        <action selector="valueChanged:" destination="tbi-1H-GWD" eventType="valueChanged" id="Ki0-Sp-fTQ"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -257,6 +260,7 @@
                         <outlet property="bestImageDisplay" destination="37G-F9-iRy" id="kuR-8K-2Ud"/>
                         <outlet property="feedbackDisplay" destination="eqX-63-zh0" id="TIS-bO-O8a"/>
                         <outlet property="securityDisplay" destination="qGY-fk-2fR" id="QVg-91-Sh4"/>
+                        <outlet property="sliderValue" destination="ykq-7y-d60" id="T0i-KT-gCY"/>
                         <outlet property="touchID" destination="Mm8-KY-Wpy" id="H6h-ma-iHw"/>
                     </connections>
                 </tableViewController>

@@ -22,6 +22,7 @@ class SettingTVC: UITableViewController {
     
     @IBOutlet weak var APICountDisplay: UILabel!
     
+    @IBOutlet weak var sliderValue: UISlider!
     
     
     private var fontStyle: UIFont {
@@ -38,6 +39,14 @@ class SettingTVC: UITableViewController {
         touchID.on = NSUserDefaults.standardUserDefaults().boolForKey("SecSetting")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changeFontStyle) , name: UIContentSizeCategoryDidChangeNotification , object: nil)
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("sliderValue") != nil {
+            
+            let value = NSUserDefaults.standardUserDefaults().objectForKey("sliderValue") as! Int
+            APICountDisplay.text = "\(value)"
+            sliderValue.value = Float(value)
+        }
+        
     }
     
     func changeFontStyle() {
@@ -62,6 +71,15 @@ class SettingTVC: UITableViewController {
         
     }
 
+    @IBAction func valueChanged(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(sliderValue.value, forKey: "sliderValue")
+        
+        APICountDisplay.text = "\(Int(sliderValue.value))"
+        
+    }
+    
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil )
     }
