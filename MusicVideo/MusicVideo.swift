@@ -89,7 +89,8 @@ class Videos {
         
         if let videoLink = data["link"] as? JSONArray,
         let attributes = videoLink[1] as? JSONDictionary,
-            let herf = attributes["href"] as? String {
+            let sattributes = attributes["attributes"]  as? JSONDictionary,
+            let herf = sattributes["href"] as? String {
             self._vVideoUrl = herf
         } else {
             _vVideoUrl = ""
