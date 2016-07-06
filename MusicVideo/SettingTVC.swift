@@ -24,6 +24,9 @@ class SettingTVC: UITableViewController {
     
     @IBOutlet weak var sliderValue: UISlider!
     
+    @IBOutlet weak var numberOfMusicVideos: UILabel!
+    
+    @IBOutlet weak var dragTheSlider: UILabel!
     
     private var fontStyle: UIFont {
         return UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
@@ -45,6 +48,9 @@ class SettingTVC: UITableViewController {
             let value = NSUserDefaults.standardUserDefaults().objectForKey("sliderValue") as! Int
             APICountDisplay.text = "\(value)"
             sliderValue.value = Float(value)
+        } else {
+            sliderValue.value = 10.0
+            APICountDisplay.text = "\(Int(sliderValue.value))"
         }
         
     }
@@ -55,6 +61,8 @@ class SettingTVC: UITableViewController {
         securityDisplay.font = fontStyle
         bestImageDisplay.font = fontStyle
         APICountDisplay.font = fontStyle
+        numberOfMusicVideos.font = fontStyle
+        dragTheSlider.font = fontStyle
     }
     
     @IBAction func touchIDSecurity(sender: UISwitch) {

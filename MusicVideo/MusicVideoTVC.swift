@@ -11,6 +11,8 @@ import UIKit
 class MusicVideoTVC: UITableViewController {
 
     var videos = [Videos]()
+    var limitCount = 10
+    
     
   
     
@@ -36,21 +38,42 @@ class MusicVideoTVC: UITableViewController {
         
         self.videos = videos
         
-//        for (index, item) in videos.enumerate() {
-//            
-//            print("\(index), the name is \(item.vName)")
-//            
-//        }
-//        
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
+        title = ("The iTunes Top \(limitCount) Music Videos")
+  
         tableView.reloadData()
+        
+    }
+    
+    func getAPICount() {
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("sliderValue") != nil {
+            let apiCount = NSUserDefaults.standardUserDefaults().objectForKey("sliderValue") as! Int
+            limitCount = apiCount
+        }
+        
+        let dateFormat = NSDateFormatter()
+        dateFormat.dateFormat = "yyyy.MM.dd G 'at' HH:mm:ss"
+        let dateString = dateFormat.stringFromDate(NSDate())
+        
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(dateString)")
+        
         
     }
     
     func runApi() {
         let api = APIManager()
         
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
+        getAPICount()
+        
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=\(limitCount)/json", completion: didLoadData)
     }
+    
+    @IBAction func refreshVideos(sender: UIRefreshControl) {
+        refreshControl?.endRefreshing()
+        runApi()
+    }
+    
     
     func reachabilityStatusChanged() {
         
@@ -127,41 +150,7 @@ class MusicVideoTVC: UITableViewController {
         }
         
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+ 
     
    
 
