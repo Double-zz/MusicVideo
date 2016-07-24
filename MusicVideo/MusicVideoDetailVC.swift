@@ -52,6 +52,22 @@ class MusicVideoDetailVC: UIViewController {
         }
     }
     
+    @IBAction func shareSocialMedia(sender: UIBarButtonItem) {
+        
+        shareWithSocialMedia()
+    }
+    
+    func shareWithSocialMedia() {
+        let activity1 = "你听过这首歌吗？"
+        let activity2 = "\(videos?.vName) by \(videos?.vArtist)"
+        let activity3 = "试试看吧，告诉我你的感受"
+        let activity4 = videos?.vLinkToiTunes
+        let activity5 = "分享自：iTunes Top 音乐榜，made by Shao Yunming"
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [activity1, activity2, activity3, activity4!, activity5], applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+        
+    }
     
     @IBAction func playVideo(sender: UIBarButtonItem) {
         let url = NSURL(string: (videos?.vVideoUrl)!)
