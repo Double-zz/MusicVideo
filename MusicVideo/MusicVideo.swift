@@ -133,8 +133,10 @@ class Videos {
             _vgenre = ""
         }
         
-        if let toiTunes = data["id"] as? JSONDictionary,
-            let theLink = toiTunes["label"] as? String {
+        if let toiTunes = data["link"] as? JSONArray,
+            let theDictionary = toiTunes[0] as? JSONDictionary,
+        let theSDic = theDictionary["attributes"] as? JSONDictionary,
+        let theLink = theSDic["href"]as? String{
             self._vLinkToiTunes = theLink
         } else {
             _vLinkToiTunes = ""

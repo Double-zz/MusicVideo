@@ -63,8 +63,12 @@ class MusicVideoDetailVC: UIViewController {
         let activity3 = "试试看吧，告诉我你的感受"
         let activity4 = videos?.vLinkToiTunes
         let activity5 = "分享自：iTunes Top 音乐榜，made by Shao Yunming"
+        let URLToItunse = NSURL(string: activity4!)
         
-        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [activity1, activity2, activity3, activity4!, activity5], applicationActivities: nil)
+        let openInSafari = OpenInSafariActivity()
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [activity1, activity2, activity3, activity4!, activity5,URLToItunse!], applicationActivities: [openInSafari])
+        
         self.presentViewController(activityViewController, animated: true, completion: nil)
         
     }
