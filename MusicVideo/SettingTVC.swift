@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingTVC: UITableViewController {
+class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var aboutDisplay: UILabel!
     
@@ -87,7 +88,73 @@ class SettingTVC: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.section == 0 && indexPath.row == 1 {
+            let mailComposeViewController = confighureMall()
+            
+            if MFMailComposeViewController.canSendMail() {
+                
+                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                mailAlert()
+            }
+        }
+    }
     
+    func confighureMall() -> MFMailComposeViewController {
+        
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        mailComposeVC.setToRecipients(["ffxdz123@gmail.com"])
+        mailComposeVC.setSubject("Music Video App Feedback")
+        mailComposeVC.setMessageBody("Hi, developer, \n\nI would like to share the following feedback ...\n", isHTML: false)
+        return mailComposeVC
+        
+    }
+    
+    func mailAlert() {
+        let alertController:UIAlertController = UIAlertController(title: "Alert", message: "No e-mail Account setup for phoe", preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default) {
+            actoion  -> Void in
+            // add action code here
+        }
+        
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Mail cancelled")
+        case MFMailComposeResultSaved.rawValue:
+            print("Mail saved")
+        case MFMailComposeResultSent.rawValue:
+            print("Mail sent")
+        case MFMailComposeResultFailed.rawValue:
+            print("Mail failed")
+        default:
+            print("UNKnow Issue")
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: {print("dismiss mail view")})
+        
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil )
     }
