@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class MusicVideoTVC: UITableViewController,UISearchResultsUpdating {
 
@@ -30,7 +31,7 @@ class MusicVideoTVC: UITableViewController,UISearchResultsUpdating {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changedFontStyle), name:UIContentSizeCategoryDidChangeNotification , object: nil)
         //#endif
         reachabilityStatusChanged()
-        
+        touchIDChek()
         
            }
     
@@ -202,11 +203,32 @@ class MusicVideoTVC: UITableViewController,UISearchResultsUpdating {
     }
     
     func filterVideo(searchText: String) {
-        filterSearch = videos.filter { videos in
+        let search1 = videos.filter { videos in
             return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString)
         }
-    
+        let search2 = videos.filter {videos in
+            return videos.vName.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        let search3 = videos.filter {videos in
+            return String(videos.vrank).lowercaseString.containsString(searchText.lowercaseString)
+        }
+        filterSearch = search1 + search2 + search3  
         tableView.reloadData()
     }
 
+    //check touchID in device
+    func touchIDChek() {
+        //print("checking touch ID")
+        let content = LAContext()
+        let defaults = NSUserDefaults.standardUserDefaults()
+
+       if content.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: nil){
+        
+        defaults.setBool(true, forKey: "ToucnIDChecked")
+       } else {
+        defaults.setBool(false, forKey: "TouchIDChecked")
+        }
+        
+        
+    }
 }

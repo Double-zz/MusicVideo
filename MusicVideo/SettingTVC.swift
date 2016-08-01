@@ -67,18 +67,30 @@ class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func touchIDSecurity(sender: UISwitch) {
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if touchID.on == true {
-            defaults.setBool(true, forKey: "SecSetting")
-        
+        if NSUserDefaults.standardUserDefaults().boolForKey("ToucnIDChecked") {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            if touchID.on == true {
+                defaults.setBool(true, forKey: "SecSetting")
+                
+            } else {
+                defaults.setBool(false, forKey: "SecSetting")
+                
+            }
         } else {
+            let alert = UIAlertController(title: "Wrong", message: "TouchID can not use in this device",preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: {[unowned self] in self.touchID.on = false})
+            let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setBool(false, forKey: "SecSetting")
             
         }
         
+        
     }
+    
+    
 
     @IBAction func valueChanged(sender: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
