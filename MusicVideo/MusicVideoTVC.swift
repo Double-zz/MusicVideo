@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-class MusicVideoTVC: UITableViewController,UISearchResultsUpdating {
+class MusicVideoTVC: UITableViewController {
 
     var videos = [Videos]()
     
@@ -58,7 +58,7 @@ class MusicVideoTVC: UITableViewController,UISearchResultsUpdating {
         
         //resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.
         
-        resultSearchController.searchBar.placeholder = "Search for Artist"
+        resultSearchController.searchBar.placeholder = "Search for Artist or music name"
         
         // add the search bar to your tableView
         tableView.tableHeaderView = resultSearchController.searchBar
@@ -196,23 +196,26 @@ class MusicVideoTVC: UITableViewController,UISearchResultsUpdating {
     }
  
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-         searchController.searchBar.text?.lowercaseString
-        filterVideo(searchController.searchBar.text!)
-        
-    }
+//    func updateSearchResultsForSearchController(searchController: UISearchController) {
+//         searchController.searchBar.text?.lowercaseString
+//        filterVideo(searchController.searchBar.text!)
+//        
+//    }
     
     func filterVideo(searchText: String) {
-        let search1 = videos.filter { videos in
-            return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString)
-        }
-        let search2 = videos.filter {videos in
-            return videos.vName.lowercaseString.containsString(searchText.lowercaseString)
-        }
-        let search3 = videos.filter {videos in
-            return String(videos.vrank).lowercaseString.containsString(searchText.lowercaseString)
-        }
-        filterSearch = search1 + search2 + search3  
+//        let search1 = videos.filter { videos in
+//            return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString)
+//        }
+//        let search2 = videos.filter {videos in
+//            return videos.vName.lowercaseString.containsString(searchText.lowercaseString)
+//        }
+//        let search3 = videos.filter {videos in
+//            return String(videos.vrank).lowercaseString.containsString(searchText.lowercaseString)
+//        }
+//        filterSearch = search1 + search2 + search3
+        filterSearch = videos.filter{ videos in
+            return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString) || videos.vName.lowercaseString.containsString(searchText.lowercaseString) || "\(videos.vrank)".lowercaseString.containsString(searchText.lowercaseString)}
+        
         tableView.reloadData()
     }
 
