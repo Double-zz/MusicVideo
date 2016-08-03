@@ -10,11 +10,14 @@ import UIKit
 
 class MusicVideoTableViewCell: UITableViewCell {
 
+    
     var video: Videos? {
         didSet {
             updateCell()
         }
     }
+    
+    var imageSize = "300x300"
     
     // add cell font style
     var fontStyle: UIFont {
@@ -48,7 +51,10 @@ class MusicVideoTableViewCell: UITableViewCell {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
-            let data = NSData(contentsOfURL: NSURL(string: video.vImageUrl)!)
+            let imageString = video.vImageUrl.stringByReplacingOccurrencesOfString("100x100", withString: self.imageSize)
+            print(imageString)
+
+            let data = NSData(contentsOfURL: NSURL(string: imageString)!)
             
             var image: UIImage?
             

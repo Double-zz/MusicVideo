@@ -201,6 +201,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="taN-1D-UkB">
                                                     <rect key="frame" x="535" y="31" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="imageQualitySwitch:" destination="tbi-1H-GWD" eventType="valueChanged" id="Zgg-Af-WIj"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -286,6 +289,7 @@
                         <outlet property="bestImageDisplay" destination="37G-F9-iRy" id="kuR-8K-2Ud"/>
                         <outlet property="dragTheSlider" destination="iKP-u4-MTF" id="WQj-VZ-Iy0"/>
                         <outlet property="feedbackDisplay" destination="eqX-63-zh0" id="TIS-bO-O8a"/>
+                        <outlet property="imageQualitySwitch" destination="taN-1D-UkB" id="Lxf-n4-PgX"/>
                         <outlet property="numberOfMusicVideos" destination="j30-jM-krY" id="hxE-Zf-yQe"/>
                         <outlet property="securityDisplay" destination="qGY-fk-2fR" id="QVg-91-Sh4"/>
                         <outlet property="sliderValue" destination="ykq-7y-d60" id="T0i-KT-gCY"/>

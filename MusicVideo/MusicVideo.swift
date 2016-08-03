@@ -23,6 +23,7 @@ class Videos {
     
     var vrank = 0
     
+    
     var vImageData: NSData?
     
     var vName: String{
@@ -81,7 +82,7 @@ class Videos {
         if let image = data["im:image"] as? JSONArray,
             let videoImage = image[2] as? JSONDictionary,
         let imageLabel = videoImage["label"] as? String{
-            self._vImageUrl = imageLabel.stringByReplacingOccurrencesOfString("100x100", withString: "600x600")
+            self._vImageUrl = imageLabel
             // change image size for performance
         }else {
             _vImageUrl = ""

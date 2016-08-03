@@ -120,6 +120,7 @@
 		E9D5ADAD1D01834900E81B43 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E91360341D1A624A004D736E /* MusicVideoTableViewCell.swift */,
 				E91360321D17F385004D736E /* MusicVideoTVC.swift */,
 				E98F3CC31D22254D00C6B8D1 /* MusicVideoDetailVC.swift */,
 				E954E5C21D2516B4003AD6B8 /* SettingTVC.swift */,
@@ -141,7 +142,6 @@
 		E9D5ADAF1D01837B00E81B43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E91360341D1A624A004D736E /* MusicVideoTableViewCell.swift */,
 				E9D5AD9C1D017D1800E81B43 /* ViewController.swift */,
 				E9D5ADA11D017D1900E81B43 /* Assets.xcassets */,
 				E9D5ADA61D017D1900E81B43 /* Info.plist */,

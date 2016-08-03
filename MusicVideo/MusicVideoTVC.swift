@@ -19,8 +19,7 @@ class MusicVideoTVC: UITableViewController {
     
     var limitCount = 10
     
-    
-  
+    var _imageSize = "300x300"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,10 +94,15 @@ class MusicVideoTVC: UITableViewController {
     
     @IBAction func refreshVideos(sender: UIRefreshControl) {
         refreshControl?.endRefreshing()
+        
         if resultSearchController.active {
+            
            refreshControl?.attributedTitle = NSAttributedString(string: "Can not refresh in searcg")
+            
         } else{
+            
         runApi()
+            
         }
     }
     
@@ -111,32 +115,69 @@ class MusicVideoTVC: UITableViewController {
             
             let alert = UIAlertController(title: "No Internet Access", message: "Please checking your internet connect", preferredStyle: .Alert )
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
-                action -> () in
-                print("cancel")
-            }
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
+//                action -> () in
+//                print("cancel")
+//            }
             
-            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive ,
-                                             handler: { test ->() in print("") } )
+//            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive ,
+//                                             handler: { test ->() in print("") } )
             
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: {test -> () in print("ok")})
             
-            alert.addAction(cancelAction)
-            alert.addAction(deleteAction)
+            //alert.addAction(cancelAction)
+            //alert.addAction(deleteAction)
             alert.addAction(okAction)
             
             self.presentViewController(alert, animated: true , completion: nil)
+        case WIFI:
+            WIFIHighQualityImage()
+            
+        case WWAN:
+            getVideos()
             
         default:
-            //view.backgroundColor = UIColor.greenColor()
-            if videos.count > 0 {
-                print("Do not refresh again")
-            } else {
-                runApi()
-            }
-        }
+            print("UKnow error")
+                    }
+    }
+
+    func WIFIHighQualityImage() {
+        
+        _imageSize = "600x600"
+
+        getVideos()
     }
     
+    func WWANImageQuality() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let alert = UIAlertController(title: "NOTICE", message: "Your are useing Cellular Date, Would you want change the image quality to low ?",preferredStyle: .Alert)
+        let lowAction = UIAlertAction(title: "LowQulity", style: .Default){ low in
+            defaults.setBool(false, forKey: "BestImage")
+            self._imageSize = "300x300"
+        }
+            let highAction = UIAlertAction(title: "HighQulity", style: .Cancel){ no in
+               defaults.setBool(true, forKey: "BestImage")
+                self._imageSize = "600x600"
+            }
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey("BestImage") {
+            alert.addAction(lowAction)
+            alert.addAction(highAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            _imageSize = "300x300"
+        }
+        
+    }
+    
+    func getVideos() {
+        if videos.count > 0 {
+            print("Do not refresh again")
+        } else {
+            runApi()
+        }
+        
+    }
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
@@ -163,6 +204,8 @@ class MusicVideoTVC: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(StoryboardID.cell, forIndexPath: indexPath) as! MusicVideoTableViewCell
+       
+        cell.imageSize = _imageSize
         
         if resultSearchController.active {
             cell.video = filterSearch[indexPath.row]

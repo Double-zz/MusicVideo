@@ -28,6 +28,8 @@ class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
     @IBOutlet weak var numberOfMusicVideos: UILabel!
     
     @IBOutlet weak var dragTheSlider: UILabel!
+   
+    @IBOutlet weak var imageQualitySwitch: UISwitch!
     
     private var fontStyle: UIFont {
         return UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
@@ -41,6 +43,8 @@ class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
         title = "Setting"
         
         touchID.on = NSUserDefaults.standardUserDefaults().boolForKey("SecSetting")
+        
+        imageQualitySwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("BestImage")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changeFontStyle) , name: UIContentSizeCategoryDidChangeNotification , object: nil)
         
@@ -98,6 +102,17 @@ class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
         
         APICountDisplay.text = "\(Int(sliderValue.value))"
         
+    }
+    
+    // switch image quality
+    @IBAction func imageQualitySwitch(sender: UISwitch) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if imageQualitySwitch.on == true {
+            defaults.setBool(true, forKey: "BestImage")
+            print("High qulity image been set")
+        } else {
+            defaults.setBool(false, forKey: "BestImage")
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
