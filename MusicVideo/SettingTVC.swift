@@ -31,6 +31,8 @@ class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
    
     @IBOutlet weak var imageQualitySwitch: UISwitch!
     
+    //var imageSet = true
+    
     private var fontStyle: UIFont {
         return UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
     }
@@ -103,17 +105,25 @@ class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
         APICountDisplay.text = "\(Int(sliderValue.value))"
         
     }
+    // when image quality chage post notification
+    func imageChangeNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName("imageQualityChange", object: nil)
+        print("seting poste notification")
+    }
     
     // switch image quality
     @IBAction func imageQualitySwitch(sender: UISwitch) {
         let defaults = NSUserDefaults.standardUserDefaults()
+        
         if imageQualitySwitch.on == true {
             defaults.setBool(true, forKey: "BestImage")
-            print("High qulity image been set")
+            self.imageChangeNotification()
         } else {
             defaults.setBool(false, forKey: "BestImage")
+            self.imageChangeNotification()
         }
     }
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -156,14 +166,14 @@ class SettingTVC: UITableViewController,MFMailComposeViewControllerDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         
         switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.Cancelled.rawValue:
             print("Mail cancelled")
-        case MFMailComposeResultSaved.rawValue:
-            print("Mail saved")
-        case MFMailComposeResultSent.rawValue:
-            print("Mail sent")
-        case MFMailComposeResultFailed.rawValue:
+        case MFMailComposeResult.Failed.rawValue:
             print("Mail failed")
+        case MFMailComposeResult.Sent.rawValue:
+            print("Mail sent")
+        case MFMailComposeResult.Saved.rawValue:
+            print("Mail saved")
         default:
             print("UNKnow Issue")
         }

@@ -38,11 +38,11 @@ class MusicVideoTableViewCell: UITableViewCell {
         musicImage.image = UIImage(named: "cellPlaceHolder")
         
         if video!.vImageData != nil {
-            print("get image from local data")
+           // print("get image from local data")
             musicImage.image = UIImage(data: video!.vImageData!)
         } else {
             getImageData(video!, imageView: musicImage)
-            print("get image from back ground")
+            //print("get image from back ground")
         }
     }
     

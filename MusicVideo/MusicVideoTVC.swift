@@ -27,13 +27,14 @@ class MusicVideoTVC: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.reachabilityStatusChanged),
                                                          name: "ReachStatusChanged", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changedFontStyle), name:UIContentSizeCategoryDidChangeNotification , object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changedFontStyle ), name:UIContentSizeCategoryDidChangeNotification , object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reachabilityStatusChanged), name: "imageQualityChange", object: nil)
         //#endif
         reachabilityStatusChanged()
         touchIDChek()
         
            }
-    
+
     func changedFontStyle() {
         
         print("UIFont style has changed")
@@ -115,18 +116,9 @@ class MusicVideoTVC: UITableViewController {
             
             let alert = UIAlertController(title: "No Internet Access", message: "Please checking your internet connect", preferredStyle: .Alert )
             
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
-//                action -> () in
-//                print("cancel")
-//            }
-            
-//            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive ,
-//                                             handler: { test ->() in print("") } )
-            
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: {test -> () in print("ok")})
             
-            //alert.addAction(cancelAction)
-            //alert.addAction(deleteAction)
+           
             alert.addAction(okAction)
             
             self.presentViewController(alert, animated: true , completion: nil)
@@ -134,7 +126,7 @@ class MusicVideoTVC: UITableViewController {
             WIFIHighQualityImage()
             
         case WWAN:
-            getVideos()
+            WWANImageQuality()
             
         default:
             print("UKnow error")
@@ -143,29 +135,43 @@ class MusicVideoTVC: UITableViewController {
 
     func WIFIHighQualityImage() {
         
-        _imageSize = "600x600"
-
+        WIFIImageSet()
         getVideos()
     }
     
-    func WWANImageQuality() {
+    func WIFIImageSet() {
         let defaults = NSUserDefaults.standardUserDefaults()
+        if defaults.boolForKey("BestImage") {
+            _imageSize = "600x600"
+        } else {
+            _imageSize = "300x300"
+        }
+    }
+    func WWANImageQuality() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        // set alert
         let alert = UIAlertController(title: "NOTICE", message: "Your are useing Cellular Date, Would you want change the image quality to low ?",preferredStyle: .Alert)
         let lowAction = UIAlertAction(title: "LowQulity", style: .Default){ low in
             defaults.setBool(false, forKey: "BestImage")
             self._imageSize = "300x300"
+            self.getVideos()
         }
-            let highAction = UIAlertAction(title: "HighQulity", style: .Cancel){ no in
-               defaults.setBool(true, forKey: "BestImage")
+            let highAction = UIAlertAction(title: "HighQulity", style: .Cancel){ high in
                 self._imageSize = "600x600"
+                self.getVideos()
             }
         
         if NSUserDefaults.standardUserDefaults().boolForKey("BestImage") {
             alert.addAction(lowAction)
             alert.addAction(highAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            dispatch_async(dispatch_get_main_queue()){
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            }
         } else {
             _imageSize = "300x300"
+            getVideos()
         }
         
     }
@@ -180,6 +186,8 @@ class MusicVideoTVC: UITableViewController {
     }
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self,name: "imageQualityChange",object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification,object: nil)
     }
     
     // MARK: - Table view data source
